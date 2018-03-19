@@ -3,8 +3,6 @@ import { ActivityIndicator, StyleSheet, FlatList, Text, View, Image, ImageBackgr
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import { StatusBar } from 'react-native'
 
-import ToastExample from '../modules/ToastExample'
-
 const FBSDK = require('react-native-fbsdk');
 const {
   LoginManager,
@@ -64,8 +62,6 @@ class Friends extends Component {
   }
 
   componentDidMount() {
-    ToastExample.showCustomToast('Cool !!!!!!!!', ToastExample.SHORT)
-
     const infoRequest = new GraphRequest(
       '/me',
       {

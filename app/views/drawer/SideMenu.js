@@ -4,6 +4,9 @@ import styles from './SideMenu.style';
 import {NavigationActions} from 'react-navigation';
 import {AsyncStorage, ScrollView, Text, View, TouchableOpacity, Image} from 'react-native';
 import GLOBAL from '../../utils/Globals';
+
+import AndroidImagePicker from '../../modules/AndroidImagePicker'
+
 const FBSDK = require('react-native-fbsdk');
 const {
   LoginManager,
@@ -59,6 +62,15 @@ class SideMenu extends Component {
 
   }
 
+  showGallery = () => {
+    this.props.navigation.navigate('DrawerClose');
+    try {
+      AndroidImagePicker.pickImage()
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
+
   render () {
     return (
       <View style={styles.container}>
@@ -84,6 +96,11 @@ class SideMenu extends Component {
           <TouchableOpacity onPress={this.navigateToScreen('Redux')} >
             <Text style={styles.navItemStyle}>
               Redux
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.showGallery} >
+            <Text style={styles.navItemStyle}>
+              Gallery
             </Text>
           </TouchableOpacity>
         </ScrollView>
