@@ -11,7 +11,6 @@ const {
 class MutualScreen extends Component {
   constructor(props) {
     super(props);
-    this.responseInfoCallback = this.responseInfoCallback.bind(this)
     this.state = {
       isLoading: true,
       userId: this.props.screenProps.userId,
@@ -22,7 +21,7 @@ class MutualScreen extends Component {
     header : null
   };
 
-  responseInfoCallback(error: ?Object, result: ?Object) {
+  responseInfoCallback = (error: ?Object, result: ?Object) => {
     if (error) {
       alert('Error fetching data: ' + error.toString());
       this.setState ({

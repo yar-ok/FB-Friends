@@ -18,7 +18,6 @@ const {
 class FeedScreen extends Component {
   constructor(props) {
     super(props);
-    this.responseInfoCallback = this.responseInfoCallback.bind(this)
     getValidatedData = getValidatedData.bind(this)
     this.state = {
       showDialog: false,
@@ -31,7 +30,7 @@ class FeedScreen extends Component {
     header : null
   };
 
-  responseInfoCallback(error: ?Object, result: ?Object) {
+  responseInfoCallback = (error: ?Object, result: ?Object) => {
     if (error) {
       alert('Error fetching data: ' + error.toString());
       this.setState ({

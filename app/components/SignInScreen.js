@@ -12,12 +12,6 @@ const {
 class SignInScreen extends Component {
   constructor(props){
       super(props);
-      this.changeFBstate = this.changeFBstate.bind(this);
-      this.setSocialLogin = this.setSocialLogin.bind(this);
-      this.nextBtn = this.nextBtn.bind(this);
-      this.logout = this.logout.bind(this);
-      this.initUser = this.initUser.bind(this);
-      this.goFriendsScreen = this.goFriendsScreen.bind(this);
       fetchSocialLogin = fetchSocialLogin.bind(this);
       this.state = {
         fbLogin: false,
@@ -39,7 +33,7 @@ class SignInScreen extends Component {
     this._mounted = true;
   }
 
-  setSocialLogin(isLogged) {
+  setSocialLogin = (isLogged) => {
     AsyncStorage.setItem(GLOBAL.SOCIAL_NAME.FACEBOOK, JSON.stringify(isLogged));
   }
 
@@ -49,7 +43,7 @@ class SignInScreen extends Component {
     }
   }
 
-  changeFBstate (isLogin) {
+  changeFBstate = (isLogin) => {
     if (isLogin) {
       AccessToken.getCurrentAccessToken()
           .then((data) => {
@@ -61,7 +55,7 @@ class SignInScreen extends Component {
     }
   }
 
-  nextBtn() {
+  nextBtn = () => {
     if (this.state.fbLogin) {
       return  <LoginButtonApp style={styles.clickButtons}
                   text='Next >'
@@ -71,17 +65,17 @@ class SignInScreen extends Component {
     }
   }
 
-  goFriendsScreen() {
+  goFriendsScreen = () => {
     this.props.navigation.navigate('Drawer', {makeLogout: this.logout});
   }
 
-  logout() {
+  logout = () => {
     LoginManager.logOut();
     this.setState({fbLogin : false});
     this.setSocialLogin(false);
   }
 
-  initUser(token) {
+  initUser = (token) => {
     fetch('https://graph.facebook.com/v2.5/me?fields=id,email,name&access_token=' + token)
     .then((response) => response.json())
     .then((json) => {

@@ -4,7 +4,6 @@ import { StatusBar, StyleSheet, Text, View, Image, ImageBackground, TouchableOpa
 class Info extends Component {
   constructor(props) {
     super(props);
-    showDrawer = showDrawer.bind(this);
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -31,6 +30,10 @@ class Info extends Component {
     }
   };
 
+  showDrawer = () => {
+    this.props.navigation.navigate('DrawerOpen');
+  }
+
   render() {
     return(
       <ImageBackground source={require('../images/sign_in_screen_bg.png')} style={styles.backgroundContainer}>
@@ -44,10 +47,6 @@ class Info extends Component {
 }
 
 export default Info
-
-function showDrawer() {
-  this.props.navigation.navigate('DrawerOpen');
-}
 
 const styles = StyleSheet.create({
   backgroundContainer: {

@@ -20,8 +20,6 @@ const NUM_COLUMNS = 2;
 class Friends extends Component {
   constructor(props) {
     super(props);
-    this.responseInfoCallback = this.responseInfoCallback.bind(this);
-    showDrawer = showDrawer.bind(this);
     this.state = {
       isLoading: true,
     }
@@ -50,7 +48,7 @@ class Friends extends Component {
     }
   };
 
-  responseInfoCallback(error: ?Object, result: ?Object) {
+  responseInfoCallback = (error: ?Object, result: ?Object) => {
     if (error) {
       alert('Error fetching data: ' + error.toString());
       this.setState ({
@@ -104,6 +102,10 @@ class Friends extends Component {
       )
     }
 
+    showDrawer = () => {
+      this.props.navigation.navigate('DrawerOpen');
+    }
+
     const { navigate } = this.props.navigation;
     return (
       <ImageBackground source={require('../images/sign_in_screen_bg.png')} style={styles.backgroundContainer}>
@@ -122,10 +124,6 @@ class Friends extends Component {
       </ImageBackground>
     )
   }
-}
-
-function showDrawer() {
-  this.props.navigation.navigate('DrawerOpen');
 }
 
 const itemWidth = (SCREEN_WIDTH - NUM_COLUMNS * 2 * PRODUCT_ITEM_MARGIN) / NUM_COLUMNS;
