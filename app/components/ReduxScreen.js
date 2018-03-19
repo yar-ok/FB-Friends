@@ -41,15 +41,15 @@ class ReduxScreen extends Component {
   }
 
   onAddTodo = (text) => {
-      const {dispatch} = this.props
+    const {dispatch} = this.props
 
-      dispatch(actionCreators.add(text))
-    }
+    dispatch(actionCreators.add(text))
+  }
 
-    onRemoveTodo = (index) => {
-      const {dispatch} = this.props
+  onRemoveTodo = (index) => {
+    const {dispatch} = this.props
 
-      dispatch(actionCreators.remove(index))
+    dispatch(actionCreators.remove(index))
     }
 
   render() {
