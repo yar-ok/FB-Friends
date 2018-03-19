@@ -81,6 +81,11 @@ class SideMenu extends Component {
               Info
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity onPress={this.navigateToScreen('Redux')} >
+            <Text style={styles.navItemStyle}>
+              Redux
+            </Text>
+          </TouchableOpacity>
         </ScrollView>
         <View style={styles.footerContainer}>
           <TouchableOpacity style={styles.logoutContainer}

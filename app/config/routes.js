@@ -1,6 +1,7 @@
 import SignInScreen from '../components/SignInScreen'
 import Friends from '../components/Friends'
 import SplashScreen from '../components/SplashScreen'
+import ReduxScreen from '../components/ReduxScreen'
 
 import Drawer from './drawer_routs'
 

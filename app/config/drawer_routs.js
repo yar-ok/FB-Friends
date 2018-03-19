@@ -4,6 +4,7 @@ import {DrawerNavigator} from 'react-navigation';
 import Friends from '../components/Friends';
 import TabScreen from '../components/BaseTabScreen';
 import Info from '../components/Info';
+import Redux from '../components/ReduxScreen';
 
 import { StackNavigator } from 'react-navigation';
 
@@ -23,7 +24,12 @@ export default DrawerNavigator({
     screen: StackNavigator({
       InfoScreen: { screen: Info },
     })
-  }
+  },
+  Redux: {
+    screen: StackNavigator({
+      ReduxScreen: { screen: Redux },
+    })
+  },
 }, {
   contentComponent: props => <SideMenu {...props}/>,
   drawerWidth: 300
