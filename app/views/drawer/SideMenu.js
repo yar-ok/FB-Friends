@@ -63,11 +63,15 @@ class SideMenu extends Component {
   }
 
   showGallery = () => {
-    this.props.navigation.navigate('DrawerClose');
     try {
-      AndroidImagePicker.pickImage()
-    } catch (e) {
-      console.log(e.message)
+      this.props.navigation.navigate('DrawerClose');
+      AndroidImagePicker.pickImage(
+        {},
+        (uri) => { console.log(uri) },
+        (error) => { console.log(error) }
+      )
+    } catch(e) {
+      () => { console.error('error') }
     }
   }
 
