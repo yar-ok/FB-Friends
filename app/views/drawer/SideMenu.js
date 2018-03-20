@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import styles from './SideMenu.style';
 import {NavigationActions} from 'react-navigation';
-import {AsyncStorage, ScrollView, Text, View, TouchableOpacity, Image} from 'react-native';
+import {Platform, AsyncStorage, ScrollView, Text, View, TouchableOpacity, Image} from 'react-native';
 import GLOBAL from '../../utils/Globals';
 
 import AndroidImagePicker from '../../modules/AndroidImagePicker'
@@ -75,6 +75,19 @@ class SideMenu extends Component {
     }
   }
 
+  galleryMenu = () => {
+    if (Platform.OS === 'android') {
+      return <TouchableOpacity onPress={this.showGallery} >
+               <Text style={styles.navItemStyle}>
+                 Gallery
+               </Text>
+             </TouchableOpacity>
+
+    } else {
+      return null
+    }
+  }
+
   render () {
     return (
       <View style={styles.container}>
@@ -102,11 +115,7 @@ class SideMenu extends Component {
               Redux
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.showGallery} >
-            <Text style={styles.navItemStyle}>
-              Gallery
-            </Text>
-          </TouchableOpacity>
+          { this.galleryMenu() }
         </ScrollView>
         <View style={styles.footerContainer}>
           <TouchableOpacity style={styles.logoutContainer}
